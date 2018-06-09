@@ -28,8 +28,8 @@ function shuffle(array) {
 let cards = document.querySelectorAll('.card');
 
 cards.forEach(function(card) {
-    card.addEventListener('click', function(event) {
-        console.log('hey');
+    card.addEventListener('click', function(e) {
+        console.log(e);
     });   
 })
 
