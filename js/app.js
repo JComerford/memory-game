@@ -25,11 +25,11 @@ function shuffle(array) {
     return array;
 }
 
-let allCards = document.querySelectorAll('.card');
+let allCards = document.querySelectorAll('.card'); //using .querySelectorAll method looks for anything with the parameter in it.
 // loop over array - .forEach
 allCards.forEach(function(card) {  // variable is allCards, card is to access the element in the array of allCards which is returned when we use.querySelectorAll.
     card.addEventListener('click', function(e) {
-        console.log(e);
+        card.classList.add('open', 'show');
     });   
 })
 
