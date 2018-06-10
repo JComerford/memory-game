@@ -25,17 +25,18 @@ function shuffle(array) {
     return array;
 }
 
-let cards = document.querySelectorAll('.card');
-
-cards.forEach(function(card) {  // variable is cards, card is to access the element in the array of cards which is returned when we use.querySelectorAll.
+let allCards = document.querySelectorAll('.card');
+// loop over array - .forEach
+allCards.forEach(function(card) {  // variable is cards, card is to access the element in the array of cards which is returned when we use.querySelectorAll.
     card.addEventListener('click', function(e) {
         console.log(e);
     });   
 })
 
 
+
 /*
- * set up the event listener for a card. If a card is clicked:
+ * set up the event listener for a card. If a card is clicked: Done!
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
