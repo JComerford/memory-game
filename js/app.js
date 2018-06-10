@@ -27,7 +27,7 @@ function shuffle(array) {
 
 let allCards = document.querySelectorAll('.card');
 // loop over array - .forEach
-allCards.forEach(function(card) {  // variable is cards, card is to access the element in the array of cards which is returned when we use.querySelectorAll.
+allCards.forEach(function(card) {  // variable is allCards, card is to access the element in the array of allCards which is returned when we use.querySelectorAll.
     card.addEventListener('click', function(e) {
         console.log(e);
     });   
