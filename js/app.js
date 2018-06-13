@@ -24,7 +24,16 @@ function shuffle(array) {
 
     return array;
 }
+let allCards = document.querySelectorAll('.card');
+let numAllCards = allCards.length;
 
+function flipCards() {
+    console.log('clicked');
+}
+
+for (i = 0; i < numAllCards; i++) {
+    allCards[i].addEventListener('click', flipCards);
+}
 
 
 
