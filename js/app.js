@@ -1,24 +1,50 @@
-/*
- * Create a list that holds all of your cards--From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
- */
-let cards = ['fa-diamond', 'fa-diamond',
-             'fa-paper-plane-o', 'fa-paper-plane-o',
-             'fa-anchor', 'fa-anchor',
-             'fa-bolt', 'fa-bolt',
-             'fa-cube', 'fa-cube',
-             'fa-leaf', 'fa-leaf',
-             'fa-bicycle', 'fa-bicycle',
-             'fa-bomb', 'fa-bomb',
-            ];
 
+
+
+
+
+/*********************
+ * 
+ *      Global DOM Variables
+ * 
+ *********************/
+
+//timer variables
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+//.card .deck variables
+let deck = document.querySelector('.deck');
+let allCards = document.querySelectorAll('.card');
+
+
+/*************************
+ * 
+ *      Global Array Variables
+ * 
+ ************************/
+
+ //open array to aide in check for match, 
+let openCards = [];
+//Array to dynamically create deck
+let cards = ['fa-diamond', 'fa-diamond',
+    'fa-paper-plane-o', 'fa-paper-plane-o',
+    'fa-anchor', 'fa-anchor',
+    'fa-bolt', 'fa-bolt',
+    'fa-cube', 'fa-cube',
+    'fa-leaf', 'fa-leaf',
+    'fa-bicycle', 'fa-bicycle',
+    'fa-bomb', 'fa-bomb',
+];
+
+ //--From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+//Describes and returns what the HTML will be for populating <ul>
 function generateCard(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
 
 //setting up timer --timer functions from https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
-let minutesLabel = document.getElementById("minutes");
-let secondsLabel = document.getElementById("seconds");
-let totalSeconds = 0;
+
 setInterval(setTime, 1000);
 
 function setTime() {
@@ -28,7 +54,7 @@ function setTime() {
 }
 
 function pad(val) {
-    let valString = val + "";
+    const valString = val + "";
     if (valString.length < 2) {
         return "0" + valString;
     } else {
@@ -57,7 +83,7 @@ function competition(theStars) {
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -66,35 +92,27 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
-//set-up a game -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+//Creates new game board -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
 function initGame() {
-    let deck = document.querySelector('.deck');
     let cardHTML = shuffle(cards).map(function(card) {
         return generateCard(card);
-
-    })
-    
+    })  
     deck.innerHTML = cardHTML.join('');
 }
 initGame();
 
 //add event listener to each card in deck
 //add class.open.show when card is clicked -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
-let allCards = document.querySelectorAll('.card');
-let openCards = [];
 
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
-
         if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match'))
         openCards.push(card);
         card.classList.add('open', 'show');
         console.log('open cards:', openCards.length);
-
 
         //check if cards match --From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
         let firstCardType = openCards[0].dataset.card;
@@ -118,13 +136,8 @@ allCards.forEach(function(card) {
                     })
                     openCards = [];
                 }, 1000)
-            }
-            
-            
-            
+            }    
         } 
-
-        
     })
 })
 
