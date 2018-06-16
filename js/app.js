@@ -1,6 +1,19 @@
 /*
  * Create a list that holds all of your cards
  */
+let cards = ['fa-diamond', 'fa-diamond',
+             'fa-paper-plane-o', 'fa-paper-plane-o',
+             'fa-anchor', 'fa-anchor',
+             'fa-bolt', 'fa-bolt',
+             'fa-cube', 'fa-cube',
+             'fa-leaf', 'fa-leaf',
+             'fa-bicycle', 'fa-bicycle',
+             'fa-bomb', 'fa-bomb',
+            ];
+
+function generateCard(card) {
+    return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
+}
 
 
 /*
@@ -25,26 +38,37 @@ function shuffle(array) {
     return array;
 }
 
-//add event listener to each card.
+//set-up a game
+function initGame() {
+    let deck = document.querySelector('.deck');
+    let cardHTML = shuffle(cards).map(function(card) {
+        return generateCard(card);
 
+    })
+    
+    deck.innerHTML = cardHTML.join('');
+}
+initGame();
+
+//add event listener to each card in deck
+//add class.open.show when card is clicked
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
 
-/*function flipCards() {
-    
-    console.log('clicked');
-}
-
-for (i = 0; i < numAllCards; i++) {
-    allCards[i].addEventListener('click', function);
-}
-*/
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
+
+        if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match'))
         openCards.push(card);
         card.classList.add('open', 'show');
         console.log('open cards:', openCards.length);
 
+
+        //check if cards match
+        let firstCardType = openCards[0].dataset.card;
+        console.log(firstCardType);
+
+        //if cards don't match, remove from array
         if (openCards.length == 2) {
             setTimeout(function() {
                 openCards.forEach(function (card) {
