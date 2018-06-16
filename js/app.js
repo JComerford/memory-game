@@ -24,6 +24,9 @@ function shuffle(array) {
 
     return array;
 }
+
+//add event listener to each card.
+
 let allCards = document.querySelectorAll('.card');
 let numAllCards = allCards.length;
 
