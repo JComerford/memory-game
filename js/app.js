@@ -70,12 +70,24 @@ allCards.forEach(function(card) {
 
         //if cards don't match, remove from array
         if (openCards.length == 2) {
-            setTimeout(function() {
-                openCards.forEach(function (card) {
-                    card.classList.remove('open', 'show');
-                })
-                openCards = [];
-            }, 1000)
+            if (openCards[0].dataset.card == openCards[1].dataset.card) {
+                console.log('This is a match!');
+                openCards[0].classList.add('match');
+                openCards[0].classList.remove('open', 'show');
+                openCards[1].classList.add('match');
+                openCards[1].classList.remove('open', 'show');
+                
+            } else {
+                //if cards do not match, hide
+                setTimeout(function () {
+                    openCards.forEach(function (card) {
+                        card.classList.remove('open', 'show');
+                    })
+                    openCards = [];
+                }, 1000)
+            }
+            
+            
             
         } 
 
