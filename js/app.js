@@ -16,10 +16,10 @@ function generateCard(card) {
 }
 
 //setting up timer --timer functions from https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var totalSeconds = 0;
-setInterval.(setTime, 1000);
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+setInterval(setTime, 1000);
 
 function setTime() {
     ++totalSeconds;
@@ -28,7 +28,7 @@ function setTime() {
 }
 
 function pad(val) {
-    var valString = val + "";
+    let valString = val + "";
     if (valString.length < 2) {
         return "0" + valString;
     } else {
@@ -100,10 +100,11 @@ allCards.forEach(function(card) {
         let firstCardType = openCards[0].dataset.card;
         console.log(firstCardType);
 
-        //if cards don't match, remove from array -- Some from me, some from Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+        //if cards don't match, remove from array -- from Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
         if (openCards.length == 2) {
             if (openCards[0].dataset.card == openCards[1].dataset.card) {
                 console.log('This is a match!');
+                //adapted to my own idea for rest of "if logic" and strayed from Mike Wales presentation.
                 openCards[0].classList.add('match');
                 openCards[0].classList.remove('open', 'show');
                 openCards[1].classList.add('match');
