@@ -40,11 +40,58 @@ function initGame() {
 }
 initGame();
 
+//add event listener to each card in deck
+//add class.open.show when card is clicked -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+let allCards = document.querySelectorAll('.card');
+let openCards = [];
+
+allCards.forEach(function (card) {
+    card.addEventListener('click', function (e) {
+
+        if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match'))
+            openCards.push(card);
+        card.classList.add('open', 'show');
+        console.log('open cards:', openCards.length);
+
+
+        //check if cards match --From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+        let firstCardType = openCards[0].dataset.card;
+        console.log(firstCardType);
+
+        //if cards don't match, remove from array -- from Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+        if (openCards.length == 2) {
+            if (openCards[0].dataset.card == openCards[1].dataset.card) {
+                console.log('This is a match!');
+                //adapted to my own idea for rest of "if logic" and strayed from Mike Wales presentation.
+                openCards[0].classList.add('match');
+                openCards[0].classList.remove('open', 'show');
+                openCards[1].classList.add('match');
+                openCards[1].classList.remove('open', 'show');
+                openCards = [];
+                
+            } else {
+                //if cards do not match, hide -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+                setTimeout(function () {
+                    openCards.forEach(function (card) {
+                        card.classList.remove('open', 'show');
+                    })
+                    openCards = [];
+                }, 1000)
+            }
+
+
+
+        }
+
+
+    })
+})
+
 //setting up timer 
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
-
+let matchedCard = document.querySelectorAll(".match");
 //starts timer on click of .deck
 function startTime (event) {
     setInterval(setTime, 1000);
@@ -105,51 +152,6 @@ function shuffle(array) {
 
 
 
-//add event listener to each card in deck
-//add class.open.show when card is clicked -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
-let allCards = document.querySelectorAll('.card');
-let openCards = [];
-
-allCards.forEach(function(card) {
-    card.addEventListener('click', function(e) {
-
-        if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match'))
-        openCards.push(card);
-        card.classList.add('open', 'show');
-        console.log('open cards:', openCards.length);
-
-
-        //check if cards match --From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
-        let firstCardType = openCards[0].dataset.card;
-        console.log(firstCardType);
-
-        //if cards don't match, remove from array -- from Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
-        if (openCards.length == 2) {
-            if (openCards[0].dataset.card == openCards[1].dataset.card) {
-                console.log('This is a match!');
-                //adapted to my own idea for rest of "if logic" and strayed from Mike Wales presentation.
-                openCards[0].classList.add('match');
-                openCards[0].classList.remove('open', 'show');
-                openCards[1].classList.add('match');
-                openCards[1].classList.remove('open', 'show');
-                openCards = [];
-            } else {
-                //if cards do not match, hide -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
-                setTimeout(function () {
-                    openCards.forEach(function (card) {
-                        card.classList.remove('open', 'show');
-                    })
-                    openCards = [];
-                }, 1000)
-            }
-            
-            
-            
-        } 
-
-        
-    })
-})
 
 
 /*
