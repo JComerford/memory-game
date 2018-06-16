@@ -30,15 +30,20 @@ function shuffle(array) {
 let allCards = document.querySelectorAll('.card');
 let numAllCards = allCards.length;
 
-function flipCards() {
+/*function flipCards() {
+    
     console.log('clicked');
 }
 
 for (i = 0; i < numAllCards; i++) {
-    allCards[i].addEventListener('click', flipCards);
+    allCards[i].addEventListener('click', function);
 }
-
-
+*/
+allCards.forEach(function(card) {
+    card.addEventListener('click', function(e) {
+        card.classList.add('open', 'show');
+    })
+})
 
 
 /*
