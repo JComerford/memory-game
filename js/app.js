@@ -9,9 +9,7 @@
  * 
  *********************/
 //timer variables
-let minutesLabel = document.getElementById("minutes");
-let secondsLabel = document.getElementById("seconds");
-let totalSeconds = 0;
+
 
 //Cards for creating deck
 let cards = ['fa-diamond', 'fa-diamond',
@@ -33,10 +31,30 @@ function generateCard(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
 
-//setting up timer --timer functions from https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
+//set-up a game -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+function initGame() {
+    let cardHTML = shuffle(cards).map(function (card) {
+        return generateCard(card);
+    })
+    deck.innerHTML = cardHTML.join('');
+}
+initGame();
 
-setInterval(setTime, 1000);
+//setting up timer 
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
 
+//starts timer on click of .deck
+function startTime (event) {
+    setInterval(setTime, 1000);
+    event.preventDefault();
+}
+document.querySelector('.card').addEventListener('click', startTime);
+
+
+
+//from https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
 function setTime() {
     ++totalSeconds;
     secondsLabel.innerHTML = pad(totalSeconds % 60);
@@ -85,14 +103,7 @@ function shuffle(array) {
     return array;
 }
 
-//set-up a game -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
-function initGame() {
-    let cardHTML = shuffle(cards).map(function(card) {
-        return generateCard(card);
-    })  
-    deck.innerHTML = cardHTML.join('');
-}
-initGame();
+
 
 //add event listener to each card in deck
 //add class.open.show when card is clicked -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
