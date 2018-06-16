@@ -76,7 +76,7 @@ allCards.forEach(function(card) {
                 openCards[0].classList.remove('open', 'show');
                 openCards[1].classList.add('match');
                 openCards[1].classList.remove('open', 'show');
-                
+                openCards = [];
             } else {
                 //if cards do not match, hide
                 setTimeout(function () {
