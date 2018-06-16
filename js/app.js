@@ -15,6 +15,17 @@ function generateCard(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
 
+//set stars for each game and how the user fared while playing
+/* TO DO -- Finish stars after timer
+let theStars = [];
+
+function competition(theStars) {
+    document.querySelector('.score-panel');
+    if (initGame()) {
+        theStars == [];
+    } if else ()
+}
+*/
 
 /*
  * Display the cards on the page
