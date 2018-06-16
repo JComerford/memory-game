@@ -5,28 +5,15 @@
 
 /*********************
  * 
- *      Global DOM Variables
+ *      Global Variables
  * 
  *********************/
-
 //timer variables
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
-//.card .deck variables
-let deck = document.querySelector('.deck');
-let allCards = document.querySelectorAll('.card');
 
-
-/*************************
- * 
- *      Global Array Variables
- * 
- ************************/
-
- //open array to aide in check for match, 
-let openCards = [];
-//Array to dynamically create deck
+//Cards for creating deck
 let cards = ['fa-diamond', 'fa-diamond',
     'fa-paper-plane-o', 'fa-paper-plane-o',
     'fa-anchor', 'fa-anchor',
@@ -37,8 +24,11 @@ let cards = ['fa-diamond', 'fa-diamond',
     'fa-bomb', 'fa-bomb',
 ];
 
- //--From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
-//Describes and returns what the HTML will be for populating <ul>
+let deck = document.querySelector('.deck');
+/*
+ * Create a list that holds all of your cards--From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+ */
+
 function generateCard(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
@@ -95,7 +85,7 @@ function shuffle(array) {
     return array;
 }
 
-//Creates new game board -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+//set-up a game -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
 function initGame() {
     let cardHTML = shuffle(cards).map(function(card) {
         return generateCard(card);
@@ -106,13 +96,17 @@ initGame();
 
 //add event listener to each card in deck
 //add class.open.show when card is clicked -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+let allCards = document.querySelectorAll('.card');
+let openCards = [];
 
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
+
         if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match'))
         openCards.push(card);
         card.classList.add('open', 'show');
         console.log('open cards:', openCards.length);
+
 
         //check if cards match --From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
         let firstCardType = openCards[0].dataset.card;
@@ -136,8 +130,13 @@ allCards.forEach(function(card) {
                     })
                     openCards = [];
                 }, 1000)
-            }    
+            }
+            
+            
+            
         } 
+
+        
     })
 })
 
