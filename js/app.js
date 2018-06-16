@@ -1,5 +1,5 @@
 /*
- * Create a list that holds all of your cards
+ * Create a list that holds all of your cards--From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
  */
 let cards = ['fa-diamond', 'fa-diamond',
              'fa-paper-plane-o', 'fa-paper-plane-o',
@@ -49,7 +49,7 @@ function shuffle(array) {
     return array;
 }
 
-//set-up a game
+//set-up a game -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
 function initGame() {
     let deck = document.querySelector('.deck');
     let cardHTML = shuffle(cards).map(function(card) {
@@ -62,7 +62,7 @@ function initGame() {
 initGame();
 
 //add event listener to each card in deck
-//add class.open.show when card is clicked
+//add class.open.show when card is clicked -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
 
@@ -75,11 +75,11 @@ allCards.forEach(function(card) {
         console.log('open cards:', openCards.length);
 
 
-        //check if cards match
+        //check if cards match --From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
         let firstCardType = openCards[0].dataset.card;
         console.log(firstCardType);
 
-        //if cards don't match, remove from array
+        //if cards don't match, remove from array -- Some from me, some from Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
         if (openCards.length == 2) {
             if (openCards[0].dataset.card == openCards[1].dataset.card) {
                 console.log('This is a match!');
@@ -89,7 +89,7 @@ allCards.forEach(function(card) {
                 openCards[1].classList.remove('open', 'show');
                 openCards = [];
             } else {
-                //if cards do not match, hide
+                //if cards do not match, hide -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
                 setTimeout(function () {
                     openCards.forEach(function (card) {
                         card.classList.remove('open', 'show');
