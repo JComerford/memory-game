@@ -91,13 +91,13 @@ allCards.forEach(function (card) {
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
-let matchedCard = document.querySelectorAll(".match");
+
 //starts timer on click of .deck
-function startTime (event) {
+function startTime () {
     setInterval(setTime, 1000);
-    event.preventDefault();
 }
-document.querySelector('.card').addEventListener('click', startTime);
+document.querySelector('.card').addEventListener('click', startTime, false);
+
 
 
 
