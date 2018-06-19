@@ -34,7 +34,7 @@ function generateCard(card) {
 //set-up a game -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
 function initGame() {
     let cardHTML = shuffle(cards).map(function (card) {
-        return generateCard(card);
+        return generateCard(card);   
     })
     deck.innerHTML = cardHTML.join('');
 }
