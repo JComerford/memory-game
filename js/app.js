@@ -70,7 +70,7 @@ allCards.forEach(function (card) {
                 openCards = [];
                 
             } else {
-                //if cards do not match, hide -- From Mike Wales Project 2 Webinar: https://www.youtube.com/watch?v=_rUH-sEs68Y
+                
                 setTimeout(function () {
                     openCards.forEach(function (card) {
                         card.classList.remove('open', 'show');
