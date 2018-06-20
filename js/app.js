@@ -35,6 +35,23 @@ function shuffle(array) {
     return array;
 }
 
+// set-up event listener for each card.
+
+let cards = document.querySelectorAll('.card');
+let deck = document.querySelector('.deck');
+
+deck.addEventListener('click', function(event) {
+    const thingToBeCLicked = event.target;
+    if (thingToBeCLicked.classList.contains('card')) {
+        thingToBeCLicked.classList.toggle('open'); //Make cards flip, change class to "card open show".
+        thingToBeCLicked.classList.toggle('show'); 
+        console.log("I'm a card!");
+    }
+})
+
+
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
