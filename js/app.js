@@ -43,13 +43,14 @@ let deck = document.querySelector('.deck');
 deck.addEventListener('click', function(event) {
     const thingToBeCLicked = event.target;
     if (thingToBeCLicked.classList.contains('card')) {
-        thingToBeCLicked.classList.toggle('open'); //Make cards flip, change class to "card open show".
-        thingToBeCLicked.classList.toggle('show'); 
-        console.log("I'm a card!");
     }
 })
 
-
+//Make cards flip, change class to "card open show".
+function flipCard() {
+    thingToBeCLicked.classList.toggle('open'); 
+    thingToBeCLicked.classList.toggle('show');
+}
 
 
 /*
