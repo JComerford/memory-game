@@ -36,21 +36,28 @@ function shuffle(array) {
 }
 
 // set-up event listener for each card.
-
+let card = document.querySelector('.card');
 let cards = document.querySelectorAll('.card');
 let deck = document.querySelector('.deck');
 
-deck.addEventListener('click', function(event) {
-    const thingToBeCLicked = event.target;
-    if (thingToBeCLicked.classList.contains('card')) {
-    }
+//let thingToBeClicked = cards.dispatchEvent(event);
+deck.addEventListener('click', function(event) { 
+    let thingToBeClicked = event.target; 
+    if (thingToBeClicked.classList.contains('card')) {   
+        flipCard(thingToBeClicked); //Call the function to flip cards while changing class to "card open show"
+    } 
 })
 
 //Make cards flip, change class to "card open show".
-function flipCard() {
-    thingToBeCLicked.classList.toggle('open'); 
-    thingToBeCLicked.classList.toggle('show');
+function flipCard(thingToBeClicked) {  //pass in the event.target here.
+    thingToBeClicked.classList.toggle('open'); //adds open to class of card...
+    thingToBeClicked.classList.toggle('show'); //...along with show. End result should be: .card = "open card show"
 }
+    
+//add the card to a *list* of "open" cards.
+let openCards = [];
+
+
 
 
 /*
