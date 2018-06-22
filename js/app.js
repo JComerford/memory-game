@@ -53,7 +53,7 @@ deck.addEventListener('click', function(event) {
             matchMaker(); //calling "matchMaker" here, will enable the function to run.
         } 
 
-    } 
+    } //TO DO: check if one could put conditionals in flipCard function.
 
 });
 
