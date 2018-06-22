@@ -39,24 +39,73 @@ function shuffle(array) {
 let card = document.querySelector('.card');
 let cards = document.querySelectorAll('.card');
 let deck = document.querySelector('.deck');
+let openCards = []; //add the card to a *list* of "open" cards.
+
 
 //let thingToBeClicked = cards.dispatchEvent(event);
 deck.addEventListener('click', function(event) { 
     let thingToBeClicked = event.target; 
-    if (thingToBeClicked.classList.contains('card')) {   
+    if (thingToBeClicked.classList.contains('card') && openCards.length <2 && !openCards.includes(thingToBeClicked) && !thingToBeClicked.classList.contains('match')) {   //conditional: card clicked contains class of (.card)/not class of (.match), array =length<2, card in array hasn't been clicked already.
         flipCard(thingToBeClicked); //Call the function to flip cards while changing class to "card open show"
+        addCardToOpenCards(thingToBeClicked);
+        
+        if (openCards.length === 2) {
+            matchMaker(); //calling "matchMaker" here, will enable the function to run.
+        } 
+
     } 
-})
+
+});
+
+//compare two cards for a match
+function matchMaker() {
+    if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
+        console.log("It's a match")
+        openCards[0].classList.toggle('match');
+        openCards[1].classList.toggle('match'); //if cards match, turn on 
+        openCards = [];
+    } else {
+        setTimeout(function() {
+            console.log('No match!');
+            flipCard(openCards[0]);
+            flipCard(openCards[1]);
+            openCards = []; //clearing array goes after calling "flipCard", or there will be nothing there to check.
+        }, 1000);
+        
+    }
+
+}
+
+
+
 
 //Make cards flip, change class to "card open show".
-function flipCard(thingToBeClicked) {  //pass in the event.target here.
-    thingToBeClicked.classList.toggle('open'); //adds open to class of card...
-    thingToBeClicked.classList.toggle('show'); //...along with show. End result should be: .card = "open card show"
-}
-    
-//add the card to a *list* of "open" cards.
-let openCards = [];
+function flipCard(card) {  //pass in the event.target here.
+    card.classList.toggle('open'); //adds open to class of card...
+    card.classList.toggle('show'); //...along with show. End result should be: .card = "open card show"
 
+}   
+
+
+//When card is clicked, push it to end of array, "openCards".
+function addCardToOpenCards(thingToBeClicked) {
+    openCards.push(thingToBeClicked);
+    console.log(openCards);
+
+}
+
+
+
+
+
+
+
+/*openCards[0].classList.remove('open');
+openCards[0].classList.remove('show');
+openCards[0].classList.add('match');
+openCards[1].classList.remove('open');
+openCards[1].classList.remove('show');
+openCards[1].classList.add('match');
 
 
 
