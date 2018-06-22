@@ -14,6 +14,7 @@ let card = document.querySelector('.card');
 let cards = document.querySelectorAll('.card');
 let deck = document.querySelector('.deck');
 let openCards = []; //add the card to a *list* of "open" cards.
+let moves = 0; //sets move counter to 0 on start of game.
 // Array with all cards in it.
 let allTheCards = ["fa fa-diamond", "fa fa-diamond",
     "fa fa-paper-plane-o", "fa fa-paper-plane-o",
@@ -50,7 +51,12 @@ function shuffle(array) {
     return array;
 }
 
-
+//Creating a function for each turn the user takes. This means not on click, but on a full turn, or two clicks.
+function turn() {
+    moves++;
+    const movesText = document.querySelector('.moves');
+    movesText.innerHTML = moves;
+}
 
 
 //let thingToBeClicked = cards.dispatchEvent(event);
@@ -62,6 +68,7 @@ deck.addEventListener('click', function(event) {
         
         if (openCards.length === 2) {
             matchMaker(); //calling "matchMaker" here, will enable the function to run.
+            turn();
         } 
 
     } //TO DO: check if one could put conditionals in flipCard function.
@@ -84,7 +91,7 @@ function matchMaker() {
         }, 1000);
         
     }
-
+    
 }
 
 
