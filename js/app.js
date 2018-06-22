@@ -9,7 +9,11 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-
+// set-up event listener for each card.
+let card = document.querySelector('.card');
+let cards = document.querySelectorAll('.card');
+let deck = document.querySelector('.deck');
+let openCards = []; //add the card to a *list* of "open" cards.
 // Array with all cards in it.
 let allTheCards = ["fa fa-diamond", "fa fa-diamond",
     "fa fa-paper-plane-o", "fa fa-paper-plane-o",
@@ -20,6 +24,17 @@ let allTheCards = ["fa fa-diamond", "fa fa-diamond",
     "fa fa-bicycle", "fa fa-bicycle",
     "fa fa-bomb", "fa fa-bomb"]
 
+// shuffle function
+function shuffleDeck() {
+const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+console.log('Cards to shuffle', cardsToShuffle);
+const shuffledCards = shuffle(cardsToShuffle);
+console.log('Shuffled Cards', shuffledCards);
+for (card of shuffledCards) {
+    deck.appendChild(card);
+}
+}
+shuffleDeck();
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -35,11 +50,7 @@ function shuffle(array) {
     return array;
 }
 
-// set-up event listener for each card.
-let card = document.querySelector('.card');
-let cards = document.querySelectorAll('.card');
-let deck = document.querySelector('.deck');
-let openCards = []; //add the card to a *list* of "open" cards.
+
 
 
 //let thingToBeClicked = cards.dispatchEvent(event);
